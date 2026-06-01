@@ -6,27 +6,48 @@ on:
 jobs:
   debug:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Fetch i mostra HTML
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch HTML i extreu estructura MP3
         run: |
-          curl -s -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
-            "https://www.radioestel.cat/podcasts/tecnologia/" | \
-            python3 -c "
-import sys
+          pip install beautifulsoup4 -q
+          python3 - << 'PYEOF'
+import requests
 from bs4 import BeautifulSoup
-pip_install = __import__('subprocess').run(['pip','install','beautifulsoup4','-q'], capture_output=True)
-html = sys.stdin.read()
-soup = BeautifulSoup(html, 'html.parser')
-# Cerca elements que continguin MP3
-for tag in soup.find_all(['a','source'], href=True):
-    href = tag.get('href','')
-    if '.mp3' in href:
+
+r = requests.get(
+    "https://www.radioestel.cat/podcasts/tecnologia/",
+    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"},
+    timeout=15
+)
+soup = BeautifulSoup(r.text, "html.parser")
+
+output = []
+for tag in soup.find_all(["a","source"]):
+    href = tag.get("href","")
+    if ".mp3" in href:
+        output.append(f"=== MP3: {href} ===")
         parent = tag.parent
-        for _ in range(4):
+        for lvl in range(6):
             if parent:
-                print('=== PARENT ===')
-                print(repr(parent))
-                print()
+                output.append(f"Nivell {lvl} <{parent.name}> class={parent.get('class','')}")
+                output.append(repr(parent.get_text(separator='|', strip=True)[:300]))
+                output.append("")
                 parent = parent.parent
-        break
-"
+        output.append("\n")
+        break  # Només el primer
+
+with open("docs/debug.txt", "w") as f:
+    f.write("\n".join(output))
+print("\n".join(output[:40]))
+PYEOF
+
+      - name: Commit debug
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "debug HTML"
+          file_pattern: "docs/debug.txt"
