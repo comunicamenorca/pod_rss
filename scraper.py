@@ -26,6 +26,12 @@ except ImportError:
 SPAIN_TZ = ZoneInfo("Europe/Madrid")
 IB3_SCHEDULE_HOURS = {9, 10, 15, 16}
 
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "ca,es;q=0.9,en;q=0.8",
+}
+
 
 def is_scheduled_hour():
     now_spain = datetime.now(SPAIN_TZ)
@@ -41,6 +47,45 @@ def is_scheduled_hour():
 def load_config(config_path="feeds.yaml"):
     with open(config_path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
+
+
+def fetch_episode_detail(episode_url, session):
+    """Entra a la pàgina individual d'un episodi i n'extreu títol i descripció."""
+    try:
+        response = session.get(episode_url, headers=HEADERS, timeout=15)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        # Títol: cerca og:title, llavors h1, llavors title
+        title = None
+        og_title = soup.find("meta", property="og:title")
+        if og_title:
+            title = og_title.get("content", "").strip()
+        if not title:
+            h1 = soup.find("h1")
+            if h1:
+                title = h1.get_text(strip=True)
+        if not title:
+            title_tag = soup.find("title")
+            if title_tag:
+                title = title_tag.get_text(strip=True).split("|")[0].strip()
+
+        # Descripció: cerca og:description, llavors el primer <p> llarg
+        description = None
+        og_desc = soup.find("meta", property="og:description")
+        if og_desc:
+            description = og_desc.get("content", "").strip()
+        if not description:
+            for p in soup.find_all("p"):
+                txt = p.get_text(strip=True)
+                if len(txt) > 50:
+                    description = txt
+                    break
+
+        return title, description
+    except Exception as e:
+        print(f"     ⚠️  No s'ha pogut carregar {episode_url}: {e}")
+        return None, None
 
 
 def extract_ib3_info(tag):
@@ -67,104 +112,95 @@ def extract_ib3_info(tag):
                 text = re.sub(r'\d{2}/\d{2}/\d{4}\s+\d{2}:\d{2}(:\d{2})?', '', text).strip()
             if len(text) > 5:
                 title = f"{text} · {date_str}" if date_str else text
-                return title, date, None
+                return title, date
         parent = parent.parent
-    return None, None, None
+    return None, None
 
 
-def extract_wordpress_info(tag, soup):
-    """Extreu títol, descripció i data d'un episodi en una web WordPress."""
-    # Puja l'arbre fins trobar un article o contenidor d'episodi
-    parent = tag.parent
-    for _ in range(8):
-        if parent is None:
-            break
-        tag_name = getattr(parent, 'name', '')
-        if tag_name in ['article', 'li', 'div']:
-            # Títol: cerca h1-h4
-            title_el = parent.find(['h1', 'h2', 'h3', 'h4'])
-            title = title_el.get_text(strip=True) if title_el else None
+def get_episode_links(url, session):
+    """Extreu els enllaços a pàgines individuals d'episodis (per webs WordPress)."""
+    response = session.get(url, headers=HEADERS, timeout=15)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
 
-            # Descripció: cerca p amb text llarg
-            description = None
-            for p in parent.find_all('p'):
-                txt = p.get_text(strip=True)
-                if len(txt) > 30:
-                    description = txt
-                    break
+    episode_links = []
+    for a in soup.find_all("a", href=True):
+        href = a["href"]
+        # Enllaços interns que semblin episodis (contenen la URL base)
+        if href.startswith(url) or (href.startswith("/") and url in href):
+            full = urljoin(url, href)
+            if full != url and full not in episode_links:
+                episode_links.append(full)
 
-            # Data
-            date = None
-            time_el = parent.find('time')
-            if time_el:
-                dt = time_el.get('datetime', '') or time_el.get_text(strip=True)
-                for fmt in ['%Y-%m-%d', '%d/%m/%Y', '%d %B %Y']:
-                    try:
-                        date = datetime.strptime(dt[:10], fmt[:len(dt[:10])]).replace(tzinfo=timezone.utc)
-                        break
-                    except ValueError:
-                        continue
-
-            if not date:
-                date = extract_date(tag)
-
-            if title:
-                return title, description, date
-
-        parent = parent.parent
-    return None, None, None
+    return episode_links
 
 
-def get_mp3_links(url, session):
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "ca,es;q=0.9,en;q=0.8",
-    }
-    response = session.get(url, headers=headers, timeout=15)
+def get_mp3_links(url, session, fetch_details=False):
+    """Extreu tots els MP3 d'una pàgina, opcionalment entrant a cada episodi."""
+    response = session.get(url, headers=HEADERS, timeout=15)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
 
     is_ib3 = "ib3" in url.lower() or "totib3" in url.lower()
 
-    # Debug: mostra l'estructura HTML al voltant dels MP3s
-    print("   [DEBUG] Analitzant estructura HTML...")
-    for i, tag in enumerate(soup.find_all(["a", "source", "audio"])):
-        href = tag.get("href") or tag.get("src") or ""
-        if ".mp3" in href.lower() and i == 0:
-            parent = tag.parent
-            for lvl in range(5):
-                if parent:
-                    print(f"   [DEBUG] Nivell {lvl}: <{parent.name}> classes={parent.get('class','')}")
-                    parent = parent.parent
-            break
-
-    mp3s = []
+    # Recull tots els MP3 amb el seu context
+    mp3_tags = []
     for tag in soup.find_all(["a", "source", "audio"]):
         href = tag.get("href") or tag.get("src") or ""
         if ".mp3" in href.lower():
-            full_url = urljoin(url, href)
+            mp3_tags.append((tag, urljoin(url, href)))
 
-            if is_ib3:
-                title, date, description = extract_ib3_info(tag)
-            else:
-                title, description, date = extract_wordpress_info(tag, soup)
+    # Si és WordPress i volem detalls, cerca els enllaços d'episodis a prop dels MP3
+    episode_page_map = {}
+    if fetch_details and not is_ib3:
+        for tag, mp3_url in mp3_tags:
+            # Cerca un <a> proper que apunti a una pàgina d'episodi
+            parent = tag.parent
+            for _ in range(6):
+                if parent is None:
+                    break
+                for a in parent.find_all("a", href=True):
+                    href = a["href"]
+                    # Ha de ser una URL de la mateixa web, no un MP3
+                    if (url.split("/")[2] in href or href.startswith("/")) and ".mp3" not in href:
+                        ep_url = urljoin(url, href)
+                        if ep_url != url:
+                            episode_page_map[mp3_url] = ep_url
+                            break
+                if mp3_url in episode_page_map:
+                    break
+                parent = parent.parent
 
-            if not title:
-                title = extract_title(tag)
-            if not date:
-                date = extract_date(tag)
-
-            mp3s.append({"url": full_url, "title": title, "date": date, "description": description})
-
-    # Elimina duplicats
+    mp3s = []
     seen = set()
-    unique = []
-    for item in mp3s:
-        if item["url"] not in seen:
-            seen.add(item["url"])
-            unique.append(item)
-    return unique
+
+    for tag, mp3_url in mp3_tags:
+        if mp3_url in seen:
+            continue
+        seen.add(mp3_url)
+
+        if is_ib3:
+            title, date = extract_ib3_info(tag)
+            description = None
+        elif fetch_details and mp3_url in episode_page_map:
+            ep_url = episode_page_map[mp3_url]
+            print(f"     → Carregant episodi: {ep_url}")
+            title, description = fetch_episode_detail(ep_url, session)
+            date = extract_date(tag)
+            time.sleep(0.5)
+        else:
+            title = extract_title(tag)
+            description = None
+            date = extract_date(tag)
+
+        if not title:
+            title = extract_title(tag)
+        if not date:
+            date = extract_date(tag)
+
+        mp3s.append({"url": mp3_url, "title": title, "date": date, "description": description})
+
+    return mp3s
 
 
 def extract_title(tag):
@@ -228,7 +264,6 @@ def generate_feed(feed_config, mp3_items, output_dir="docs"):
         ET.SubElement(img, "url").text = feed_config["image"]
         ET.SubElement(img, "title").text = feed_config["name"]
         ET.SubElement(img, "link").text = feed_config["url"]
-        # iTunes image
         itunes_img = ET.SubElement(channel, "itunes:image")
         itunes_img.set("href", feed_config["image"])
 
@@ -287,7 +322,8 @@ def main():
         print(f"\n🔍 Processant: {feed_config['name']}")
         print(f"   URL: {feed_config['url']}")
         try:
-            mp3s = get_mp3_links(feed_config["url"], session)
+            fetch_details = feed_config.get("fetch_episode_details", False)
+            mp3s = get_mp3_links(feed_config["url"], session, fetch_details=fetch_details)
             print(f"   Trobats {len(mp3s)} MP3s")
             if mp3s:
                 print("   Primers episodis:")
