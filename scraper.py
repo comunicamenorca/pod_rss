@@ -14,8 +14,29 @@ import sys
 import re
 import argparse
 from urllib.parse import urljoin, urlparse
-from email.utils import formatdate
 import time
+
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:
+    from backports.zoneinfo import ZoneInfo
+
+
+SPAIN_TZ = ZoneInfo("Europe/Madrid")
+# Hores espanyoles en què volem executar el feed d'IB3
+IB3_SCHEDULE_HOURS = {9, 10, 15, 16}
+
+
+def is_scheduled_hour():
+    """Comprova si l'hora actual a Espanya és una de les hores programades."""
+    now_spain = datetime.now(SPAIN_TZ)
+    current_hour = now_spain.hour
+    if current_hour in IB3_SCHEDULE_HOURS:
+        print(f"⏰ Hora espanyola: {now_spain.strftime('%H:%M')} — execució programada ✅")
+        return True
+    else:
+        print(f"⏰ Hora espanyola: {now_spain.strftime('%H:%M')} — fora d'horari, s'atura.")
+        return False
 
 
 def load_config(config_path="feeds.yaml"):
@@ -36,14 +57,11 @@ def get_mp3_links(url, session):
 
     mp3s = []
 
-    # Busca enllaços directes a MP3
     for tag in soup.find_all(["a", "source", "audio"]):
         href = tag.get("href") or tag.get("src") or ""
         if href.lower().endswith(".mp3") or ".mp3" in href.lower():
             full_url = urljoin(url, href)
-            # Busca el títol més proper
             title = extract_title(tag, soup)
-            # Busca la data més propera
             date = extract_date(tag, soup)
             mp3s.append({
                 "url": full_url,
@@ -64,25 +82,21 @@ def get_mp3_links(url, session):
 
 def extract_title(tag, soup):
     """Intenta extreure un títol proper a l'element."""
-    # Puja l'arbre cercant text significatiu
     parent = tag.parent
     for _ in range(5):
         if parent is None:
             break
-        # Busca encapçalaments, spans amb text
         for selector in ["h1", "h2", "h3", "h4", "strong", "span", "p", "li"]:
             el = parent.find(selector)
             if el and el.get_text(strip=True):
                 text = el.get_text(strip=True)
-                if len(text) > 3 and len(text) < 200:
+                if 3 < len(text) < 200:
                     return text
         parent = parent.parent
 
-    # Si l'element és un <a>, usa el text
     if tag.name == "a" and tag.get_text(strip=True):
         return tag.get_text(strip=True)
 
-    # Nom del fitxer com a fallback
     path = urlparse(tag.get("href") or tag.get("src") or "").path
     filename = os.path.basename(path).replace(".mp3", "").replace("-", " ").replace("_", " ")
     return filename or "Episodi sense títol"
@@ -91,9 +105,9 @@ def extract_title(tag, soup):
 def extract_date(tag, soup):
     """Intenta extreure una data propera a l'element."""
     date_patterns = [
-        r"\d{2}/\d{2}/\d{4}",   # 29/05/2026
-        r"\d{4}-\d{2}-\d{2}",   # 2026-05-29
-        r"\d{2}\.\d{2}\.\d{4}", # 29.05.2026
+        r"\d{2}/\d{2}/\d{4}",
+        r"\d{4}-\d{2}-\d{2}",
+        r"\d{2}\.\d{2}\.\d{4}",
     ]
 
     parent = tag.parent
@@ -105,14 +119,11 @@ def extract_date(tag, soup):
             match = re.search(pattern, text)
             if match:
                 date_str = match.group()
-                try:
-                    for fmt in ["%d/%m/%Y", "%Y-%m-%d", "%d.%m.%Y"]:
-                        try:
-                            return datetime.strptime(date_str, fmt).replace(tzinfo=timezone.utc)
-                        except ValueError:
-                            continue
-                except Exception:
-                    pass
+                for fmt in ["%d/%m/%Y", "%Y-%m-%d", "%d.%m.%Y"]:
+                    try:
+                        return datetime.strptime(date_str, fmt).replace(tzinfo=timezone.utc)
+                    except ValueError:
+                        continue
         parent = parent.parent
 
     return datetime.now(timezone.utc)
@@ -166,7 +177,13 @@ def main():
     parser.add_argument("--config", default="feeds.yaml", help="Fitxer de configuració")
     parser.add_argument("--feed", default=None, help="Nom del feed a processar (tots si no s'especifica)")
     parser.add_argument("--output", default="docs", help="Directori de sortida")
+    parser.add_argument("--check-schedule", action="store_true",
+                        help="Comprova si és l'hora programada (hora espanyola) abans d'executar")
     args = parser.parse_args()
+
+    # Comprova l'horari si s'ha demanat
+    if args.check_schedule and not is_scheduled_hour():
+        sys.exit(0)
 
     config = load_config(args.config)
     session = requests.Session()
@@ -192,7 +209,7 @@ def main():
             print(f"   ❌ Error: {e}")
             continue
 
-        time.sleep(1)  # Respecta el servidor
+        time.sleep(1)
 
 
 if __name__ == "__main__":
