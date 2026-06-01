@@ -1,0 +1,28 @@
+feeds:
+
+  - name: "Tecnologia - Ràdio Estel"
+    url: "https://www.radioestel.cat/podcasts/tecnologia/"
+    description: "Secció de tecnologia de Ràdio Estel"
+    language: "ca"
+    image: "https://www.radioestel.cat/wp-content/uploads/2022/01/logo-radio-estel.png"
+    output: "tecnologia-radioestel.xml"
+    max_episodes: 30
+    # Cron: cada dia a les 7h (veure workflow-daily.yml)
+
+  - name: "Informatius Menorca - IB3"
+    url: "https://totib3.org/radio/informatiusmenorca"
+    description: "Informatius de l'edició de Menorca d'IB3 Ràdio"
+    language: "ca"
+    image: "https://s3.amazonaws.com/media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/large.jpg"
+    output: "informatius-menorca-ib3.xml"
+    max_episodes: 20
+    # Cron: cada 6 hores (veure workflow-6h.yml)
+
+  # Afegeix aquí nous podcasts amb aquest format:
+  # - name: "Nom del Podcast"
+  #   url: "https://..."
+  #   description: "Descripció del podcast"
+  #   language: "ca"
+  #   image: "https://...imatge.jpg"
+  #   output: "nom-del-fitxer.xml"
+  #   max_episodes: 30
