@@ -43,6 +43,42 @@ def load_config(config_path="feeds.yaml"):
         return yaml.safe_load(f)
 
 
+def extract_ib3_info(tag):
+    """Extreu títol i data específicament per a pàgines IB3."""
+    parent = tag.parent
+    for _ in range(4):
+        if parent is None:
+            break
+        text = parent.get_text(separator=" ", strip=True)
+        if text:
+            # Elimina la durada (ex: "15 min", "11 min")
+            text = re.sub(r'\d+\s*min', '', text).strip()
+
+            # Extreu la data i hora (ex: "29/05/2026 14:30:00")
+            date_match = re.search(r'(\d{2}/\d{2}/\d{4})\s+(\d{2}:\d{2})', text)
+            date = None
+            date_str = ""
+            if date_match:
+                date_str = date_match.group(1)
+                try:
+                    date = datetime.strptime(
+                        f"{date_match.group(1)} {date_match.group(2)}",
+                        "%d/%m/%Y %H:%M"
+                    ).replace(tzinfo=timezone.utc)
+                except ValueError:
+                    pass
+                # Elimina la data del text per quedar-nos amb el títol net
+                text = re.sub(r'\d{2}/\d{2}/\d{4}\s+\d{2}:\d{2}(:\d{2})?', '', text).strip()
+
+            # El títol és el text restant si és prou llarg
+            if len(text) > 5:
+                title = f"{text} · {date_str}" if date_str else text
+                return title, date
+
+        parent = parent.parent
+    return None, None
+
+
 def get_mp3_links(url, session):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -53,13 +89,25 @@ def get_mp3_links(url, session):
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
 
+    # Detecta si és una pàgina IB3
+    is_ib3 = "ib3" in url.lower() or "totib3" in url.lower()
+
     mp3s = []
     for tag in soup.find_all(["a", "source", "audio"]):
         href = tag.get("href") or tag.get("src") or ""
         if ".mp3" in href.lower():
             full_url = urljoin(url, href)
-            title = extract_title(tag)
-            date = extract_date(tag)
+
+            if is_ib3:
+                title, date = extract_ib3_info(tag)
+            else:
+                title, date = None, None
+
+            if not title:
+                title = extract_title(tag)
+            if not date:
+                date = extract_date(tag)
+
             mp3s.append({"url": full_url, "title": title, "date": date})
 
     # Elimina duplicats
@@ -118,7 +166,6 @@ def extract_date(tag):
 def generate_feed(feed_config, mp3_items, output_dir="docs"):
     os.makedirs(output_dir, exist_ok=True)
 
-    # Construeix el RSS manualment amb XML
     rss = ET.Element("rss", version="2.0")
     rss.set("xmlns:itunes", "http://www.itunes.com/dtds/podcast-1.0.dtd")
     channel = ET.SubElement(rss, "channel")
@@ -191,6 +238,10 @@ def main():
         try:
             mp3s = get_mp3_links(feed_config["url"], session)
             print(f"   Trobats {len(mp3s)} MP3s")
+            if mp3s:
+                print("   Títols extrets:")
+                for ep in mp3s[:3]:
+                    print(f"     · {ep['title']}")
             if not mp3s:
                 print("   ⚠️  Cap MP3 trobat.")
                 continue
