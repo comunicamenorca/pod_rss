@@ -49,43 +49,74 @@ def load_config(config_path="feeds.yaml"):
         return yaml.safe_load(f)
 
 
-def fetch_episode_detail(episode_url, session):
-    """Entra a la pàgina individual d'un episodi i n'extreu títol i descripció."""
-    try:
-        response = session.get(episode_url, headers=HEADERS, timeout=15)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.text, "html.parser")
+def extract_radioestel_episodes(soup, base_url):
+    """
+    Extreu episodis de Ràdio Estel.
+    Estructura:
+      <p class="... font-bold text-gray-800">21 maig 2026</p>
+      <p class="... text-gray-500">Títol de l'episodi</p>
+      <article class="... episode-content-article ...">Descripció...</article>
+      <source src="https://...mp3">
+    """
+    episodes = []
 
-        # Títol: cerca og:title, llavors h1, llavors title
-        title = None
-        og_title = soup.find("meta", property="og:title")
-        if og_title:
-            title = og_title.get("content", "").strip()
-        if not title:
-            h1 = soup.find("h1")
-            if h1:
-                title = h1.get_text(strip=True)
-        if not title:
-            title_tag = soup.find("title")
-            if title_tag:
-                title = title_tag.get_text(strip=True).split("|")[0].strip()
+    # Troba tots els contenidors d'episodi (audio-player-container)
+    containers = soup.find_all("div", class_=lambda c: c and "audio-player-container" in c)
 
-        # Descripció: cerca og:description, llavors el primer <p> llarg
-        description = None
-        og_desc = soup.find("meta", property="og:description")
-        if og_desc:
-            description = og_desc.get("content", "").strip()
-        if not description:
-            for p in soup.find_all("p"):
-                txt = p.get_text(strip=True)
-                if len(txt) > 50:
-                    description = txt
-                    break
+    for container in containers:
+        # MP3
+        source = container.find("source")
+        if not source or not source.get("src", "").endswith(".mp3"):
+            # Busca també <a> amb .mp3
+            a = container.find("a", href=lambda h: h and ".mp3" in h)
+            mp3_url = urljoin(base_url, a["href"]) if a else None
+        else:
+            mp3_url = source["src"]
 
-        return title, description
-    except Exception as e:
-        print(f"     ⚠️  No s'ha pogut carregar {episode_url}: {e}")
-        return None, None
+        if not mp3_url:
+            continue
+
+        # Data: p amb font-bold text-gray-800
+        date_el = container.find("p", class_=lambda c: c and "font-bold" in c and "text-gray-800" in c)
+        date_text = date_el.get_text(strip=True) if date_el else ""
+        date = parse_catalan_date(date_text)
+
+        # Títol: p amb text-gray-500
+        title_el = container.find("p", class_=lambda c: c and "text-gray-500" in c)
+        title = title_el.get_text(strip=True) if title_el else date_text
+
+        # Descripció: article amb episode-content-article
+        desc_el = container.find("article", class_=lambda c: c and "episode-content-article" in c)
+        description = desc_el.get_text(separator=" ", strip=True) if desc_el else title
+
+        episodes.append({
+            "url": mp3_url,
+            "title": title,
+            "date": date,
+            "description": description,
+        })
+
+    return episodes
+
+
+def parse_catalan_date(text):
+    """Converteix dates en català com '21 maig 2026' a datetime."""
+    months = {
+        "gener": 1, "febrer": 2, "març": 3, "abril": 4,
+        "maig": 5, "juny": 6, "juliol": 7, "agost": 8,
+        "setembre": 9, "octubre": 10, "novembre": 11, "desembre": 12
+    }
+    text = text.lower().strip()
+    match = re.search(r'(\d{1,2})\s+(\w+)\s+(\d{4})', text)
+    if match:
+        day, month_name, year = match.groups()
+        month = months.get(month_name)
+        if month:
+            try:
+                return datetime(int(year), month, int(day), tzinfo=timezone.utc)
+            except ValueError:
+                pass
+    return datetime.now(timezone.utc)
 
 
 def extract_ib3_info(tag):
@@ -117,64 +148,31 @@ def extract_ib3_info(tag):
     return None, None
 
 
-def get_episode_links(url, session):
-    """Extreu els enllaços a pàgines individuals d'episodis (per webs WordPress)."""
-    response = session.get(url, headers=HEADERS, timeout=15)
-    response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    episode_links = []
-    for a in soup.find_all("a", href=True):
-        href = a["href"]
-        # Enllaços interns que semblin episodis (contenen la URL base)
-        if href.startswith(url) or (href.startswith("/") and url in href):
-            full = urljoin(url, href)
-            if full != url and full not in episode_links:
-                episode_links.append(full)
-
-    return episode_links
-
-
-def get_mp3_links(url, session, fetch_details=False):
-    """Extreu tots els MP3 d'una pàgina, opcionalment entrant a cada episodi."""
+def get_mp3_links(url, session):
     response = session.get(url, headers=HEADERS, timeout=15)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
 
     is_ib3 = "ib3" in url.lower() or "totib3" in url.lower()
+    is_radioestel = "radioestel" in url.lower()
 
-    # Recull tots els MP3 amb el seu context
-    mp3_tags = []
-    for tag in soup.find_all(["a", "source", "audio"]):
-        href = tag.get("href") or tag.get("src") or ""
-        if ".mp3" in href.lower():
-            mp3_tags.append((tag, urljoin(url, href)))
-
-    # Si és WordPress i volem detalls, cerca els enllaços d'episodis a prop dels MP3
-    episode_page_map = {}
-    if fetch_details and not is_ib3:
-        for tag, mp3_url in mp3_tags:
-            # Cerca un <a> proper que apunti a una pàgina d'episodi
-            parent = tag.parent
-            for _ in range(6):
-                if parent is None:
-                    break
-                for a in parent.find_all("a", href=True):
-                    href = a["href"]
-                    # Ha de ser una URL de la mateixa web, no un MP3
-                    if (url.split("/")[2] in href or href.startswith("/")) and ".mp3" not in href:
-                        ep_url = urljoin(url, href)
-                        if ep_url != url:
-                            episode_page_map[mp3_url] = ep_url
-                            break
-                if mp3_url in episode_page_map:
-                    break
-                parent = parent.parent
+    # Ràdio Estel: parser específic
+    if is_radioestel:
+        episodes = extract_radioestel_episodes(soup, url)
+        if episodes:
+            return episodes
+        # Fallback genèric si no troba res
+        print("   ⚠️  Parser Ràdio Estel no ha trobat episodis, usant parser genèric")
 
     mp3s = []
     seen = set()
 
-    for tag, mp3_url in mp3_tags:
+    for tag in soup.find_all(["a", "source", "audio"]):
+        href = tag.get("href") or tag.get("src") or ""
+        if ".mp3" not in href.lower():
+            continue
+
+        mp3_url = urljoin(url, href)
         if mp3_url in seen:
             continue
         seen.add(mp3_url)
@@ -182,12 +180,6 @@ def get_mp3_links(url, session, fetch_details=False):
         if is_ib3:
             title, date = extract_ib3_info(tag)
             description = None
-        elif fetch_details and mp3_url in episode_page_map:
-            ep_url = episode_page_map[mp3_url]
-            print(f"     → Carregant episodi: {ep_url}")
-            title, description = fetch_episode_detail(ep_url, session)
-            date = extract_date(tag)
-            time.sleep(0.5)
         else:
             title = extract_title(tag)
             description = None
@@ -215,10 +207,8 @@ def extract_title(tag):
                 if 3 < len(text) < 200:
                     return text
         parent = parent.parent
-
     if tag.name == "a" and tag.get_text(strip=True):
         return tag.get_text(strip=True)
-
     path = urlparse(tag.get("href") or tag.get("src") or "").path
     filename = os.path.basename(path).replace(".mp3", "").replace("-", " ").replace("_", " ")
     return filename or "Episodi sense títol"
@@ -322,17 +312,16 @@ def main():
         print(f"\n🔍 Processant: {feed_config['name']}")
         print(f"   URL: {feed_config['url']}")
         try:
-            fetch_details = feed_config.get("fetch_episode_details", False)
-            mp3s = get_mp3_links(feed_config["url"], session, fetch_details=fetch_details)
-            print(f"   Trobats {len(mp3s)} MP3s")
+            mp3s = get_mp3_links(feed_config["url"], session)
+            print(f"   Trobats {len(mp3s)} episodis")
             if mp3s:
                 print("   Primers episodis:")
                 for ep in mp3s[:3]:
                     print(f"     · {ep['title']}")
                     if ep.get('description'):
-                        print(f"       {ep['description'][:80]}...")
+                        print(f"       {ep['description'][:100]}...")
             if not mp3s:
-                print("   ⚠️  Cap MP3 trobat.")
+                print("   ⚠️  Cap episodi trobat.")
                 continue
             generate_feed(feed_config, mp3s, args.output)
         except Exception as e:
