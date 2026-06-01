@@ -7,6 +7,7 @@ feeds:
     image: "https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png"
     output: "tecnologia-radioestel.xml"
     max_episodes: 30
+    fetch_episode_details: true   # Entra a cada episodi per obtenir títol i descripció reals
 
   - name: "Informatius Menorca - IB3"
     url: "https://totib3.org/radio/informatiusmenorca"
