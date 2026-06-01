@@ -51,10 +51,7 @@ def extract_ib3_info(tag):
             break
         text = parent.get_text(separator=" ", strip=True)
         if text:
-            # Elimina la durada (ex: "15 min", "11 min")
             text = re.sub(r'\d+\s*min', '', text).strip()
-
-            # Extreu la data i hora (ex: "29/05/2026 14:30:00")
             date_match = re.search(r'(\d{2}/\d{2}/\d{4})\s+(\d{2}:\d{2})', text)
             date = None
             date_str = ""
@@ -67,16 +64,55 @@ def extract_ib3_info(tag):
                     ).replace(tzinfo=timezone.utc)
                 except ValueError:
                     pass
-                # Elimina la data del text per quedar-nos amb el títol net
                 text = re.sub(r'\d{2}/\d{2}/\d{4}\s+\d{2}:\d{2}(:\d{2})?', '', text).strip()
-
-            # El títol és el text restant si és prou llarg
             if len(text) > 5:
                 title = f"{text} · {date_str}" if date_str else text
-                return title, date
+                return title, date, None
+        parent = parent.parent
+    return None, None, None
+
+
+def extract_wordpress_info(tag, soup):
+    """Extreu títol, descripció i data d'un episodi en una web WordPress."""
+    # Puja l'arbre fins trobar un article o contenidor d'episodi
+    parent = tag.parent
+    for _ in range(8):
+        if parent is None:
+            break
+        tag_name = getattr(parent, 'name', '')
+        if tag_name in ['article', 'li', 'div']:
+            # Títol: cerca h1-h4
+            title_el = parent.find(['h1', 'h2', 'h3', 'h4'])
+            title = title_el.get_text(strip=True) if title_el else None
+
+            # Descripció: cerca p amb text llarg
+            description = None
+            for p in parent.find_all('p'):
+                txt = p.get_text(strip=True)
+                if len(txt) > 30:
+                    description = txt
+                    break
+
+            # Data
+            date = None
+            time_el = parent.find('time')
+            if time_el:
+                dt = time_el.get('datetime', '') or time_el.get_text(strip=True)
+                for fmt in ['%Y-%m-%d', '%d/%m/%Y', '%d %B %Y']:
+                    try:
+                        date = datetime.strptime(dt[:10], fmt[:len(dt[:10])]).replace(tzinfo=timezone.utc)
+                        break
+                    except ValueError:
+                        continue
+
+            if not date:
+                date = extract_date(tag)
+
+            if title:
+                return title, description, date
 
         parent = parent.parent
-    return None, None
+    return None, None, None
 
 
 def get_mp3_links(url, session):
@@ -89,8 +125,19 @@ def get_mp3_links(url, session):
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
 
-    # Detecta si és una pàgina IB3
     is_ib3 = "ib3" in url.lower() or "totib3" in url.lower()
+
+    # Debug: mostra l'estructura HTML al voltant dels MP3s
+    print("   [DEBUG] Analitzant estructura HTML...")
+    for i, tag in enumerate(soup.find_all(["a", "source", "audio"])):
+        href = tag.get("href") or tag.get("src") or ""
+        if ".mp3" in href.lower() and i == 0:
+            parent = tag.parent
+            for lvl in range(5):
+                if parent:
+                    print(f"   [DEBUG] Nivell {lvl}: <{parent.name}> classes={parent.get('class','')}")
+                    parent = parent.parent
+            break
 
     mp3s = []
     for tag in soup.find_all(["a", "source", "audio"]):
@@ -99,16 +146,16 @@ def get_mp3_links(url, session):
             full_url = urljoin(url, href)
 
             if is_ib3:
-                title, date = extract_ib3_info(tag)
+                title, date, description = extract_ib3_info(tag)
             else:
-                title, date = None, None
+                title, description, date = extract_wordpress_info(tag, soup)
 
             if not title:
                 title = extract_title(tag)
             if not date:
                 date = extract_date(tag)
 
-            mp3s.append({"url": full_url, "title": title, "date": date})
+            mp3s.append({"url": full_url, "title": title, "date": date, "description": description})
 
     # Elimina duplicats
     seen = set()
@@ -181,15 +228,19 @@ def generate_feed(feed_config, mp3_items, output_dir="docs"):
         ET.SubElement(img, "url").text = feed_config["image"]
         ET.SubElement(img, "title").text = feed_config["name"]
         ET.SubElement(img, "link").text = feed_config["url"]
+        # iTunes image
+        itunes_img = ET.SubElement(channel, "itunes:image")
+        itunes_img.set("href", feed_config["image"])
 
     max_ep = feed_config.get("max_episodes", 50)
     for i, ep in enumerate(mp3_items[:max_ep]):
         title = ep["title"] or f"Episodi {i+1}"
         pub_date = ep["date"] or datetime.now(timezone.utc)
+        description = ep.get("description") or title
 
         item = ET.SubElement(channel, "item")
         ET.SubElement(item, "title").text = title
-        ET.SubElement(item, "description").text = title
+        ET.SubElement(item, "description").text = description
         ET.SubElement(item, "pubDate").text = format_datetime(pub_date)
         ET.SubElement(item, "guid").text = ep["url"]
         enc = ET.SubElement(item, "enclosure")
@@ -239,9 +290,11 @@ def main():
             mp3s = get_mp3_links(feed_config["url"], session)
             print(f"   Trobats {len(mp3s)} MP3s")
             if mp3s:
-                print("   Títols extrets:")
+                print("   Primers episodis:")
                 for ep in mp3s[:3]:
                     print(f"     · {ep['title']}")
+                    if ep.get('description'):
+                        print(f"       {ep['description'][:80]}...")
             if not mp3s:
                 print("   ⚠️  Cap MP3 trobat.")
                 continue
