@@ -3,81 +3,82 @@
   <channel>
     <title>Tecnologia - Ràdio Estel</title>
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
-    <description>Secció de tecnologia de Ràdio Estel</description>
+    <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Mon, 01 Jun 2026 08:09:49 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2026 08:24:26 +0000</lastBuildDate>
     <image>
-      <url>https://www.radioestel.cat/wp-content/uploads/2022/01/logo-radio-estel.png</url>
+      <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
+    <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
     <item>
       <title>21 maig 2026</title>
       <description>21 maig 2026</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260521_TECNOLOGIA___BIZUM.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260521_TECNOLOGIA___BIZUM.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>7 maig 2026</title>
       <description>7 maig 2026</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260507_TECNOLOGIA___COBERTURA.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260507_TECNOLOGIA___COBERTURA.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>30 abril 2026</title>
       <description>30 abril 2026</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260430_TECNOLOGIA___CIBERATACS.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260430_TECNOLOGIA___CIBERATACS.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>16 abril 2026</title>
       <description>16 abril 2026</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260416_TECNOLOGIA___PREU_MOBILS.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260416_TECNOLOGIA___PREU_MOBILS.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>9 abril 2026</title>
       <description>9 abril 2026</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260409_TECNOLOGIA___X_CATALA.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260409_TECNOLOGIA___X_CATALA.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>26 març 2026</title>
       <description>26 març 2026</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260326_TECNOLOGIA___JUDICI_META_YOUTUBE.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260326_TECNOLOGIA___JUDICI_META_YOUTUBE.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>5 març 2026</title>
       <description>5 març 2026</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260305_TECNOLOGIA___MWC_2026.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260305_TECNOLOGIA___MWC_2026.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Albert Cuesta</title>
       <description>Albert Cuesta</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260226_TECNOLOGIA___CATALA_INTERNET.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260226_TECNOLOGIA___CATALA_INTERNET.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Albert Cuesta</title>
       <description>Albert Cuesta</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260212_TECNOLOGIA___IA_CATALA.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260212_TECNOLOGIA___IA_CATALA.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Albert Cuesta</title>
       <description>Albert Cuesta</description>
-      <pubDate>Mon, 01 Jun 2026 08:09:49 +0000</pubDate>
+      <pubDate>Mon, 01 Jun 2026 08:24:26 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260129_TECNOLOGIA___CAMP_NOU.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260129_TECNOLOGIA___CAMP_NOU.mp3" type="audio/mpeg" length="0" />
     </item>
