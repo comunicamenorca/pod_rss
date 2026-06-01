@@ -1,0 +1,32 @@
+name: Debug HTML Ràdio Estel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch i mostra HTML
+        run: |
+          curl -s -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" \
+            "https://www.radioestel.cat/podcasts/tecnologia/" | \
+            python3 -c "
+import sys
+from bs4 import BeautifulSoup
+pip_install = __import__('subprocess').run(['pip','install','beautifulsoup4','-q'], capture_output=True)
+html = sys.stdin.read()
+soup = BeautifulSoup(html, 'html.parser')
+# Cerca elements que continguin MP3
+for tag in soup.find_all(['a','source'], href=True):
+    href = tag.get('href','')
+    if '.mp3' in href:
+        parent = tag.parent
+        for _ in range(4):
+            if parent:
+                print('=== PARENT ===')
+                print(repr(parent))
+                print()
+                parent = parent.parent
+        break
+"
