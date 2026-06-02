@@ -2,7 +2,7 @@ name: Actualitza feeds IB3 Menorca
 
 on:
   schedule:
-    - cron: "0 7,8,9,13,14,15 * * 1-5"  # Cobreix 9,10,11h i 15,16,17h hora espanyola (estiu/hivern)
+    - cron: "0,30 7,8,13,14 * * 1-5"  # 9:00, 9:30, 15:00, 15:30h Menorca (cobreix UTC+1 i UTC+2)
   workflow_dispatch:
 
 jobs:
