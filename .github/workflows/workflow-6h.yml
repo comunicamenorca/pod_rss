@@ -2,14 +2,14 @@ name: Actualitza feeds IB3 Menorca
 
 on:
   schedule:
-    # Executa cada hora entre les 7-16 UTC (cobreix 9-18h hora espanyola)
-    # per poder comprovar dins l'script si és l'hora correcta
-    - cron: "0 7,8,9,13,14,15 * * 1-5"
-  workflow_dispatch:  # Permet executar-lo manualment
+    - cron: "0 7,8,9,13,14,15 * * *"  # Cobreix 9-10h i 15-16h tant en horari estiu (UTC+2) com hivern (UTC+1)
+  workflow_dispatch:
 
 jobs:
   update-ib3:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repositori
         uses: actions/checkout@v4
