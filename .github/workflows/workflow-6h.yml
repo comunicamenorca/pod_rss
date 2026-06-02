@@ -2,9 +2,6 @@ name: Actualitza feeds IB3 Menorca
 
 on:
   schedule:
-    #                   9:00  9:30  10:00 10:30 15:00 15:30 16:00 16:30  (hora Menorca estiu UTC+2)
-    #          UTC:     7:00  7:30   8:00  8:30 13:00 13:30 14:00 14:30
-    # hora hivern UTC+1:8:00  8:30   9:00  9:30 14:00 14:30 15:00 15:30
     - cron: "0,30 7,8,13,14 * * 1-5"
   workflow_dispatch:
 
@@ -25,8 +22,13 @@ jobs:
       - name: Instal·la dependències
         run: pip install -r requirements.txt
 
-      - name: Genera feed IB3 Menorca
+      - name: Genera feed IB3 Menorca (programat)
+        if: github.event_name == 'schedule'
         run: python scraper.py --feed "Informatius Menorca - IB3" --output docs --check-schedule
+
+      - name: Genera feed IB3 Menorca (manual)
+        if: github.event_name == 'workflow_dispatch'
+        run: python scraper.py --feed "Informatius Menorca - IB3" --output docs
 
       - name: Publica canvis
         uses: stefanzweifel/git-auto-commit-action@v5
