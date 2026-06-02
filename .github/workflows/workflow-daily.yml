@@ -2,12 +2,14 @@ name: Actualitza feeds diaris
 
 on:
   schedule:
-    - cron: "0 7 * * *"   # Cada dia a les 7h UTC
-  workflow_dispatch:       # Permet executar-lo manualment
+    - cron: "0 12 * * 1-5"   # 14h Menorca (UTC+2 estiu) / 13h UTC+1 hivern — cobert per check
+  workflow_dispatch:
 
 jobs:
   update-radioestel:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repositori
         uses: actions/checkout@v4
