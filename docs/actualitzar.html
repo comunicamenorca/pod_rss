@@ -19,6 +19,7 @@
       --ib3: #e5a000;
       --success: #00c97a;
       --error: #e54444;
+      --warning: #e5a000;
     }
 
     body {
@@ -62,28 +63,12 @@
       gap: 12px;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
+    .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
     .dot.estel { background: var(--estel); }
     .dot.ib3   { background: var(--ib3); }
 
-    .card-info h2 {
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    .card-info p {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-      font-family: 'DM Mono', monospace;
-    }
+    .card-info h2 { font-size: 15px; font-weight: 600; line-height: 1.2; }
+    .card-info p  { font-size: 12px; color: var(--muted); margin-top: 2px; font-family: 'DM Mono', monospace; }
 
     button {
       width: 100%;
@@ -99,30 +84,28 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      position: relative;
-      overflow: hidden;
     }
 
     button.estel { background: var(--estel); color: #fff; }
     button.ib3   { background: var(--ib3);   color: #000; }
-
     button:active { transform: scale(0.97); }
-    button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
     .status {
       font-size: 12px;
       font-family: 'DM Mono', monospace;
-      padding: 8px 12px;
+      padding: 10px 12px;
       border-radius: 8px;
       display: none;
       align-items: center;
       gap: 8px;
+      line-height: 1.4;
     }
-
-    .status.show { display: flex; }
+    .status.show    { display: flex; }
     .status.loading { background: #1e1e1e; color: var(--muted); }
     .status.ok      { background: #0d2e1e; color: var(--success); }
     .status.err     { background: #2e0d0d; color: var(--error); }
+    .status.waiting { background: #1e1a0d; color: var(--warning); }
 
     .spinner {
       width: 14px; height: 14px;
@@ -134,6 +117,7 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    .token-label { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
     .token-input {
       background: #111;
       border: 1px solid var(--border);
@@ -146,14 +130,8 @@
       outline: none;
     }
     .token-input:focus { border-color: #444; }
-    .token-label {
-      font-size: 11px;
-      color: var(--muted);
-      font-family: 'DM Mono', monospace;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
+
+    .token-hint { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; }
   </style>
 </head>
 <body>
@@ -163,6 +141,7 @@
   <div class="card">
     <div class="token-label">GitHub Token</div>
     <input class="token-input" type="password" id="token" placeholder="ghp_..." autocomplete="off">
+    <div class="token-hint">Només cal per llançar. El resultat es consulta sense token.</div>
   </div>
 
   <div class="card">
@@ -173,7 +152,7 @@
         <p>s'actualitza cada dia a les 14h</p>
       </div>
     </div>
-    <button class="estel" onclick="trigger('workflow-daily.yml', 'estel-status', this)">
+    <button class="estel" id="btn-estel" onclick="trigger('workflow-daily.yml', 'estel-status', 'btn-estel')">
       ▶ Actualitzar ara
     </button>
     <div class="status" id="estel-status"></div>
@@ -187,7 +166,7 @@
         <p>9h · 9:30h · 10h · 15h · 15:30h · 16h</p>
       </div>
     </div>
-    <button class="ib3" onclick="trigger('workflow-6h.yml', 'ib3-status', this)">
+    <button class="ib3" id="btn-ib3" onclick="trigger('workflow-6h.yml', 'ib3-status', 'btn-ib3')">
       ▶ Actualitzar ara
     </button>
     <div class="status" id="ib3-status"></div>
@@ -195,24 +174,71 @@
 
   <script>
     const REPO = 'comunicamenorca/pod_rss';
+    const API  = 'https://api.github.com';
 
     function getToken() {
       return document.getElementById('token').value.trim();
     }
 
-    async function trigger(workflow, statusId, btn) {
+    function showStatus(id, type, msg) {
+      const el = document.getElementById(id);
+      el.className = `status show ${type}`;
+      el.innerHTML = type === 'loading' || type === 'waiting'
+        ? `<div class="spinner"></div><span>${msg}</span>`
+        : `<span>${msg}</span>`;
+    }
+
+    async function waitForResult(statusId, btnId, runId) {
+      const btn = document.getElementById(btnId);
+      const maxWait = 120; // segons màxim d'espera
+      const interval = 4000;
+      let elapsed = 0;
+
+      while (elapsed < maxWait * 1000) {
+        await new Promise(r => setTimeout(r, interval));
+        elapsed += interval;
+
+        try {
+          // Consulta sense token (repositori públic)
+          const res = await fetch(`${API}/repos/${REPO}/actions/runs/${runId}`);
+          const run = await res.json();
+
+          if (run.status === 'completed') {
+            if (run.conclusion === 'success') {
+              showStatus(statusId, 'ok', `✓ Feed actualitzat correctament`);
+            } else {
+              showStatus(statusId, 'err', `✗ Ha fallat (${run.conclusion}) — revisa Actions a GitHub`);
+            }
+            btn.disabled = false;
+            return;
+          } else {
+            const s = Math.round(elapsed / 1000);
+            showStatus(statusId, 'waiting', `Executant... ${s}s`);
+          }
+        } catch(e) {
+          // Continua esperant
+        }
+      }
+
+      showStatus(statusId, 'err', '✗ Temps d\'espera esgotat — revisa Actions a GitHub');
+      btn.disabled = false;
+    }
+
+    async function trigger(workflow, statusId, btnId) {
       const token = getToken();
       if (!token) {
         showStatus(statusId, 'err', '⚠ Introdueix el token primer');
         return;
       }
 
+      const btn = document.getElementById(btnId);
       btn.disabled = true;
       showStatus(statusId, 'loading', 'Llançant workflow...');
 
       try {
+        // Llança el workflow
         const res = await fetch(
-          `https://api.github.com/repos/${REPO}/actions/workflows/${workflow}/dispatches`,
+          `${API}/repos/${REPO}/actions/workflows/${workflow}/dispatches`,
           {
             method: 'POST',
             headers: {
@@ -224,25 +250,37 @@
           }
         );
 
-        if (res.status === 204) {
-          showStatus(statusId, 'ok', '✓ Workflow llançat — actualitzarà en ~30s');
-        } else {
+        if (res.status !== 204) {
           const err = await res.json();
           showStatus(statusId, 'err', `✗ Error ${res.status}: ${err.message}`);
+          btn.disabled = false;
+          return;
         }
+
+        showStatus(statusId, 'waiting', 'Workflow llançat, esperant resultat...');
+
+        // Espera 3s i busca el run_id del workflow que acabem de llançar
+        await new Promise(r => setTimeout(r, 3000));
+        const runsRes = await fetch(
+          `${API}/repos/${REPO}/actions/workflows/${workflow}/runs?per_page=1`,
+          { headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' } }
+        );
+        const runsData = await runsRes.json();
+        const runId = runsData.workflow_runs?.[0]?.id;
+
+        if (!runId) {
+          showStatus(statusId, 'err', '✗ No s\'ha pogut obtenir l\'ID del workflow');
+          btn.disabled = false;
+          return;
+        }
+
+        // Espera el resultat sense token
+        waitForResult(statusId, btnId, runId);
+
       } catch (e) {
         showStatus(statusId, 'err', `✗ ${e.message}`);
-      } finally {
         btn.disabled = false;
       }
-    }
-
-    function showStatus(id, type, msg) {
-      const el = document.getElementById(id);
-      el.className = `status show ${type}`;
-      el.innerHTML = type === 'loading'
-        ? `<div class="spinner"></div><span>${msg}</span>`
-        : `<span>${msg}</span>`;
     }
   </script>
 </body>
