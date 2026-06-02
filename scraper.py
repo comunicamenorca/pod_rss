@@ -295,10 +295,13 @@ def main():
     parser.add_argument("--check-schedule", action="store_true")
     args = parser.parse_args()
 
-    if args.check_schedule and not is_scheduled_hour():
-        sys.exit(0)
-
     config = load_config(args.config)
+
+    if args.check_schedule:
+        feeds_list = config.get("feeds", [])
+        feed_for_schedule = next((f for f in feeds_list if f["name"] == args.feed), feeds_list[0] if feeds_list else None) if args.feed else feeds_list[0] if feeds_list else None
+        if not is_scheduled_hour(args.output, feed_for_schedule):
+            sys.exit(0)
     session = requests.Session()
 
     feeds = config.get("feeds", [])
