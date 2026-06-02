@@ -25,10 +25,14 @@ except ImportError:
 
 SPAIN_TZ = ZoneInfo("Europe/Madrid")
 # IB3 publica a les ~9h i ~15h hora Menorca
-# Comprovem a les 9h, 9:30h, 15h i 15:30h
+# Comprovem a les 9h, 9:30h, 10h, 15h, 15:30h i 16h
 IB3_SCHEDULE = {
-    9:  {"franja": "mati"},
-    15: {"franja": "tarda"},
+    9:  "mati",
+    15: "tarda",
+}
+IB3_RETRY_HOURS = {
+    10: "mati",   # reintent si a les 9h i 9:30h no hi havia res
+    16: "tarda",  # reintent si a les 15h i 15:30h no hi havia res
 }
 IB3_RETRY_MINUTES = {30}  # minuts dins l'hora on fem reintent
 
@@ -45,24 +49,41 @@ def is_scheduled_hour(output_dir="docs", feed_config=None):
     current_hour = now_spain.hour
     current_minute = now_spain.minute
 
-    # Hora principal (9h o 15h): sempre executar
+    def ja_hi_ha_episodi_avui(franja_hores):
+        """Comprova si el feed ja s'ha actualitzat avui durant alguna de les hores indicades."""
+        if not feed_config:
+            return False
+        filename = feed_config.get("output", "feed.xml")
+        filepath = os.path.join(output_dir, filename)
+        if os.path.exists(filepath):
+            last_mod_dt = datetime.fromtimestamp(os.path.getmtime(filepath), tz=SPAIN_TZ)
+            return last_mod_dt.date() == now_spain.date() and last_mod_dt.hour in franja_hores
+        return False
+
+    # Hores principals: sempre executar
     if current_hour in IB3_SCHEDULE:
         print(f"⏰ {now_spain.strftime('%H:%M')} — hora principal ✅")
         return True
 
-    # Reintent a les X:30 (9:30h o 15:30h): executar només si no hi ha episodi d'avui
-    retry_base = current_hour - 1 if current_minute >= 30 else None
-    if retry_base in IB3_SCHEDULE and current_minute in IB3_RETRY_MINUTES:
-        franja_nom = "matí" if retry_base == 9 else "tarda"
-        if feed_config:
-            filename = feed_config.get("output", "feed.xml")
-            filepath = os.path.join(output_dir, filename)
-            if os.path.exists(filepath):
-                last_mod_dt = datetime.fromtimestamp(os.path.getmtime(filepath), tz=SPAIN_TZ)
-                if last_mod_dt.date() == now_spain.date() and last_mod_dt.hour == retry_base:
-                    print(f"⏰ {now_spain.strftime('%H:%M')} — ja hi havia episodi de {franja_nom}, s'atura.")
-                    return False
-        print(f"⏰ {now_spain.strftime('%H:%M')} — reintent {franja_nom} ✅")
+    # Reintent a les X:30 (9:30h o 15:30h)
+    retry_base = current_hour if current_minute in IB3_RETRY_MINUTES else None
+    if retry_base in IB3_SCHEDULE:
+        franja_nom = "matí" if IB3_SCHEDULE[retry_base] == "mati" else "tarda"
+        if ja_hi_ha_episodi_avui({retry_base}):
+            print(f"⏰ {now_spain.strftime('%H:%M')} — ja hi havia episodi de {franja_nom}, s'atura.")
+            return False
+        print(f"⏰ {now_spain.strftime('%H:%M')} — reintent :30 {franja_nom} ✅")
+        return True
+
+    # Reintent a les 10h i 16h: executar si no hi ha hagut episodi a la franja anterior
+    if current_hour in IB3_RETRY_HOURS:
+        franja = IB3_RETRY_HOURS[current_hour]
+        franja_nom = "matí" if franja == "mati" else "tarda"
+        hores_anteriors = {current_hour - 1, current_hour - 1}  # 9h per 10h, 15h per 16h
+        if ja_hi_ha_episodi_avui(hores_anteriors):
+            print(f"⏰ {now_spain.strftime('%H:%M')} — ja hi havia episodi de {franja_nom}, s'atura.")
+            return False
+        print(f"⏰ {now_spain.strftime('%H:%M')} — reintent hora completa {franja_nom} ✅")
         return True
 
     print(f"⏰ {now_spain.strftime('%H:%M')} — fora d'horari, s'atura.")
