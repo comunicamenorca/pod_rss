@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualitzar Podcasts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;600&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f0f;
+      --card: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #e8e8e8;
+      --muted: #666;
+      --estel: #0099e5;
+      --ib3: #e5a000;
+      --success: #00c97a;
+      --error: #e54444;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 16px;
+    }
+
+    h1 {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      width: 100%;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot.estel { background: var(--estel); }
+    .dot.ib3   { background: var(--ib3); }
+
+    .card-info h2 {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .card-info p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+      font-family: 'DM Mono', monospace;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button.estel { background: var(--estel); color: #fff; }
+    button.ib3   { background: var(--ib3);   color: #000; }
+
+    button:active { transform: scale(0.97); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .status {
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status.show { display: flex; }
+    .status.loading { background: #1e1e1e; color: var(--muted); }
+    .status.ok      { background: #0d2e1e; color: var(--success); }
+    .status.err     { background: #2e0d0d; color: var(--error); }
+
+    .spinner {
+      width: 14px; height: 14px;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .token-input {
+      background: #111;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      width: 100%;
+      outline: none;
+    }
+    .token-input:focus { border-color: #444; }
+    .token-label {
+      font-size: 11px;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎙 Podcasts · Comunicamenorca</h1>
+
+  <div class="card">
+    <div class="token-label">GitHub Token</div>
+    <input class="token-input" type="password" id="token" placeholder="ghp_..." autocomplete="off">
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="dot estel"></div>
+      <div class="card-info">
+        <h2>Tecnologia · Ràdio Estel</h2>
+        <p>s'actualitza cada dia a les 14h</p>
+      </div>
+    </div>
+    <button class="estel" onclick="trigger('workflow-daily.yml', 'estel-status', this)">
+      ▶ Actualitzar ara
+    </button>
+    <div class="status" id="estel-status"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="dot ib3"></div>
+      <div class="card-info">
+        <h2>Informatius Menorca · IB3</h2>
+        <p>9h · 9:30h · 10h · 15h · 15:30h · 16h</p>
+      </div>
+    </div>
+    <button class="ib3" onclick="trigger('workflow-6h.yml', 'ib3-status', this)">
+      ▶ Actualitzar ara
+    </button>
+    <div class="status" id="ib3-status"></div>
+  </div>
+
+  <script>
+    const REPO = 'comunicamenorca/pod_rss';
+
+    function getToken() {
+      return document.getElementById('token').value.trim();
+    }
+
+    async function trigger(workflow, statusId, btn) {
+      const token = getToken();
+      if (!token) {
+        showStatus(statusId, 'err', '⚠ Introdueix el token primer');
+        return;
+      }
+
+      btn.disabled = true;
+      showStatus(statusId, 'loading', 'Llançant workflow...');
+
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${REPO}/actions/workflows/${workflow}/dispatches`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `token ${token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ref: 'main' })
+          }
+        );
+
+        if (res.status === 204) {
+          showStatus(statusId, 'ok', '✓ Workflow llançat — actualitzarà en ~30s');
+        } else {
+          const err = await res.json();
+          showStatus(statusId, 'err', `✗ Error ${res.status}: ${err.message}`);
+        }
+      } catch (e) {
+        showStatus(statusId, 'err', `✗ ${e.message}`);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function showStatus(id, type, msg) {
+      const el = document.getElementById(id);
+      el.className = `status show ${type}`;
+      el.innerHTML = type === 'loading'
+        ? `<div class="spinner"></div><span>${msg}</span>`
+        : `<span>${msg}</span>`;
+    }
+  </script>
+</body>
+</html>
