@@ -24,10 +24,13 @@ except ImportError:
 
 
 SPAIN_TZ = ZoneInfo("Europe/Madrid")
-IB3_MAIN_HOURS = {9, 10, 15, 16}
-IB3_MORNING_HOURS = {9, 10}
-IB3_AFTERNOON_HOURS = {15, 16}
-IB3_RETRY_HOURS = {11: "mati", 17: "tarda"}
+# IB3 publica a les ~9h i ~15h hora Menorca
+# Comprovem a les 9h, 9:30h, 15h i 15:30h
+IB3_SCHEDULE = {
+    9:  {"franja": "mati"},
+    15: {"franja": "tarda"},
+}
+IB3_RETRY_MINUTES = {30}  # minuts dins l'hora on fem reintent
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -40,29 +43,29 @@ def is_scheduled_hour(output_dir="docs", feed_config=None):
     import os
     now_spain = datetime.now(SPAIN_TZ)
     current_hour = now_spain.hour
+    current_minute = now_spain.minute
 
-    if current_hour in IB3_MAIN_HOURS:
-        print(f"⏰ Hora espanyola: {now_spain.strftime('%H:%M')} — hora principal ✅")
+    # Hora principal (9h o 15h): sempre executar
+    if current_hour in IB3_SCHEDULE:
+        print(f"⏰ {now_spain.strftime('%H:%M')} — hora principal ✅")
         return True
 
-    if current_hour in IB3_RETRY_HOURS:
-        franja = IB3_RETRY_HOURS[current_hour]
-        franja_hores = IB3_MORNING_HOURS if franja == "mati" else IB3_AFTERNOON_HOURS
-        franja_nom = "matí (9h-10h)" if franja == "mati" else "tarda (15h-16h)"
-
+    # Reintent a les X:30 (9:30h o 15:30h): executar només si no hi ha episodi d'avui
+    retry_base = current_hour - 1 if current_minute >= 30 else None
+    if retry_base in IB3_SCHEDULE and current_minute in IB3_RETRY_MINUTES:
+        franja_nom = "matí" if retry_base == 9 else "tarda"
         if feed_config:
             filename = feed_config.get("output", "feed.xml")
             filepath = os.path.join(output_dir, filename)
             if os.path.exists(filepath):
                 last_mod_dt = datetime.fromtimestamp(os.path.getmtime(filepath), tz=SPAIN_TZ)
-                if last_mod_dt.date() == now_spain.date() and last_mod_dt.hour in franja_hores:
-                    print(f"⏰ Hora espanyola: {now_spain.strftime('%H:%M')} — ja hi havia episodi nou al {franja_nom}, s'atura.")
+                if last_mod_dt.date() == now_spain.date() and last_mod_dt.hour == retry_base:
+                    print(f"⏰ {now_spain.strftime('%H:%M')} — ja hi havia episodi de {franja_nom}, s'atura.")
                     return False
-
-        print(f"⏰ Hora espanyola: {now_spain.strftime('%H:%M')} — reintent (no hi havia episodi nou al {franja_nom}) ✅")
+        print(f"⏰ {now_spain.strftime('%H:%M')} — reintent {franja_nom} ✅")
         return True
 
-    print(f"⏰ Hora espanyola: {now_spain.strftime('%H:%M')} — fora d'horari, s'atura.")
+    print(f"⏰ {now_spain.strftime('%H:%M')} — fora d'horari, s'atura.")
     return False
 
 
