@@ -1,8 +1,6 @@
 name: Actualitza feeds diaris
 
 on:
-  schedule:
-    - cron: "0 12 * * 1-5"   # 14h Menorca (UTC+2 estiu) / 13h UTC+1 hivern — cobert per check
   workflow_dispatch:
 
 jobs:
