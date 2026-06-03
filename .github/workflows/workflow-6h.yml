@@ -1,8 +1,6 @@
 name: Actualitza feeds IB3 Menorca
 
 on:
-  schedule:
-    - cron: "0,30 7,8,13,14 * * 1-5"
   workflow_dispatch:
 
 jobs:
@@ -22,12 +20,7 @@ jobs:
       - name: Instal·la dependències
         run: pip install -r requirements.txt
 
-      - name: Genera feed IB3 Menorca (programat)
-        if: github.event_name == 'schedule'
-        run: python scraper.py --feed "Informatius Menorca - IB3" --output docs --check-schedule
-
-      - name: Genera feed IB3 Menorca (manual)
-        if: github.event_name == 'workflow_dispatch'
+      - name: Genera feed IB3 Menorca
         run: python scraper.py --feed "Informatius Menorca - IB3" --output docs
 
       - name: Publica canvis
