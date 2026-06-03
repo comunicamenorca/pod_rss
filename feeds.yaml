@@ -13,6 +13,6 @@ feeds:
     url: "https://totib3.org/radio/informatiusmenorca"
     description: "Informatius de l'edició de Menorca d'IB3 Ràdio"
     language: "ca"
-    image: "https://s3.amazonaws.com/media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/large.jpg"
+    image: "https://comunicamenorca.github.io/pod_rss/imatge-ib3.png"
     output: "informatius-menorca-ib3.xml"
     max_episodes: 20
