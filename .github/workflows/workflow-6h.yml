@@ -21,7 +21,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Genera feed IB3 Menorca
-        run: python scraper.py --feed "Informatius Menorca - IB3" --output docs
+        run: python scraper.py --feed "Informatius Menorca - IB3 Ràdio" --output docs
 
       - name: Publica canvis
         uses: stefanzweifel/git-auto-commit-action@v5
