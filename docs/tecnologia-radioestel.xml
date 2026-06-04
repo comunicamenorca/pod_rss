@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Wed, 03 Jun 2026 09:38:10 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 20:18:09 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>El vessant tecnològic del viatge de Lleó XIV: cobertura i seguretat</title>
+      <description>Amb Albert Cuesta analitzem el vessant tecnològic del viatge de Lleó XIV, tant pel que fa a la cobertura de la xarxa com la seguretat. En altres notícies comentem l'abús de Google de la intel·ligència artificial i com Meta utilitza els seus empleats per entrenar-la.</description>
+      <pubDate>Thu, 04 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260604_TECNOLOGIA___PAPA.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260604_TECNOLOGIA___PAPA.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Pagaments amb Bizum i denuncia a Meta, TikTok i Google</title>
       <description>Amb Albert Cuesta comentem la denuncia a Meta, TikTok i Google per "desprotecció" davant les estafes financeres. A més, tractem els pagaments amb Bizum que s'han començat a utilitzar.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260212_TECNOLOGIA___IA_CATALA.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260212_TECNOLOGIA___IA_CATALA.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>El Camp Nou, un laboratori tecnològic</title>
-      <description>El periodista Albert Cuesta ens explica com el Camp Nou s'ha convertit en un laboratori tecnològic, amb una xarxa 5G pròpia. Alhora, comentem les novetats de les pantalles antiespia i què és el Moltbot.</description>
-      <pubDate>Thu, 29 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260129_TECNOLOGIA___CAMP_NOU.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260129_TECNOLOGIA___CAMP_NOU.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
