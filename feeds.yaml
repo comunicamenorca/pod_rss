@@ -9,7 +9,7 @@ feeds:
     max_episodes: 30
     fetch_episode_details: true   # Entra a cada episodi per obtenir títol i descripció reals
 
-  - name: "Informatius Menorca - IB3"
+  - name: "Informatius Menorca - IB3 Ràdio"
     url: "https://totib3.org/radio/informatiusmenorca"
     description: "Informatius de l'edició de Menorca d'IB3 Ràdio"
     language: "ca"
