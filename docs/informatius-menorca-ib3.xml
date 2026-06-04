@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
-    <title>Informatius Menorca - IB3</title>
+    <title>Informatius Menorca - IB3 Ràdio</title>
     <link>https://totib3.org/radio/informatiusmenorca</link>
     <description>Informatius de l'edició de Menorca d'IB3 Ràdio</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 04 Jun 2026 14:00:52 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 22:27:06 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-ib3.png</url>
-      <title>Informatius Menorca - IB3</title>
+      <title>Informatius Menorca - IB3 Ràdio</title>
       <link>https://totib3.org/radio/informatiusmenorca</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-ib3.png" />
