@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 02 Jul 2026 11:00:56 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 15:47:42 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>Gigafàbrica d'IA, el preu dels aparells electrònics i la privacitat de WhatsApp</title>
+      <description>Amb Albert cuestra tractem la construcció d'una gigafàbrica d'intel·ligència artificial, el preu dels aparells electrònics, la privacitat de WhatsApp i els mòbils fent de sismògrafs.</description>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260702_TECNOLOGIA___GIGAFABRICA.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260702_TECNOLOGIA___GIGAFABRICA.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>La incorporació del català als televisors de Samsung</title>
       <description>Amb Albert Cuesta analitzem la incorporació del català als televisors de Samsung. També explica la relació entre Meta i el reconeixement facial, els cotxes i el rearmament i Anthropic i la IA.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260305_TECNOLOGIA___MWC_2026.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260305_TECNOLOGIA___MWC_2026.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Com està el català al món digital</title>
-      <description>El periodista Albert Cuesta repassa el diagnòstic sobre com està el català al món digital . També explica les novetats del Mobile World Congress d'enguany i el projecte de Microsoft amb el vidre com a suport d'emmagatzematge. Per acabar, relata una història amb el robot aspirador 'DJI'.</description>
-      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260226_TECNOLOGIA___CATALA_INTERNET.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260226_TECNOLOGIA___CATALA_INTERNET.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
