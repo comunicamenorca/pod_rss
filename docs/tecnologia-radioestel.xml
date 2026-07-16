@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 16 Jul 2026 11:01:15 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 13:20:59 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>Polèmica amb Instagram, descens en vendes de mòbils i el Mundial de les operadores</title>
+      <description>En l'última secció de la temporada amb Albert Cuesta analitzem la polèmica d'Instagram per la utilització de fotografies de tercers. També comentem les estafes a assegurances de cotxe amb intel·ligència artificial, el descens de vendes de mòbils i els missatges dels operadors mòbils espanyols durant el Mundial.</description>
+      <pubDate>Thu, 16 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260716_TECNOLOGIA___IMATGES_INSTAGRAM.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260716_TECNOLOGIA___IMATGES_INSTAGRAM.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Gigafàbrica d'IA, el preu dels aparells electrònics i la privacitat de WhatsApp</title>
       <description>Amb Albert cuestra tractem la construcció d'una gigafàbrica d'intel·ligència artificial, el preu dels aparells electrònics, la privacitat de WhatsApp i els mòbils fent de sismògrafs.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260326_TECNOLOGIA___JUDICI_META_YOUTUBE.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260326_TECNOLOGIA___JUDICI_META_YOUTUBE.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Les novetats del Mobile World Congress 2026</title>
-      <description>Albert Cuesta ens porta les novetats que s'han vist en aquesta edició del Mobile World Congress, com pagar un plus per tenir millor connexió o la connectivitat per els exèrcits. També parlem de la presència del centre tecnològic Eurecat al MWC. Alhora, explica com el Cupra Born és el primer cotxe europeu que incorpora el català.</description>
-      <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260305_TECNOLOGIA___MWC_2026.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260305_TECNOLOGIA___MWC_2026.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
