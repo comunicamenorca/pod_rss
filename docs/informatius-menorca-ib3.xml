@@ -5,13 +5,20 @@
     <link>https://totib3.org/radio/informatiusmenorca</link>
     <description>Informatius de l'edició de Menorca d'IB3 Ràdio</description>
     <language>ca</language>
-    <lastBuildDate>Tue, 21 Jul 2026 07:00:49 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 13:00:50 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-ib3.png</url>
       <title>Informatius Menorca - IB3 Ràdio</title>
       <link>https://totib3.org/radio/informatiusmenorca</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-ib3.png" />
+    <item>
+      <title>Informatiu Migdia - Edició Menorca · 21/07/2026</title>
+      <description>Informatiu Migdia - Edició Menorca · 21/07/2026</description>
+      <pubDate>Tue, 21 Jul 2026 14:30:00 +0000</pubDate>
+      <guid>https://s3.amazonaws.com/media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/7bb3b3dd-8502-11f1-b2f7-fa163ed37948/8-605-157499.mp3</guid>
+      <enclosure url="https://s3.amazonaws.com/media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/7bb3b3dd-8502-11f1-b2f7-fa163ed37948/8-605-157499.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 21/07/2026</title>
       <description>Informatiu Matí - Edició Menorca · 21/07/2026</description>
@@ -144,13 +151,6 @@
       <pubDate>Wed, 08 Jul 2026 08:45:00 +0000</pubDate>
       <guid>https://s3.amazonaws.com/media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/cc646def-7a9a-11f1-b2f7-fa163ed37948/8-391-157057.mp3</guid>
       <enclosure url="https://s3.amazonaws.com/media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/cc646def-7a9a-11f1-b2f7-fa163ed37948/8-391-157057.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Informatiu Migdia - Edició Menorca · 07/07/2026</title>
-      <description>Informatiu Migdia - Edició Menorca · 07/07/2026</description>
-      <pubDate>Tue, 07 Jul 2026 14:30:00 +0000</pubDate>
-      <guid>https://s3.amazonaws.com/media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/df85c7e0-7a01-11f1-b2f7-fa163ed37948/8-605-157038.mp3</guid>
-      <enclosure url="https://s3.amazonaws.com/media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/df85c7e0-7a01-11f1-b2f7-fa163ed37948/8-605-157038.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
