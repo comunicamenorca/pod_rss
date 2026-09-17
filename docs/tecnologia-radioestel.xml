@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 10 Sep 2026 11:00:55 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 11:00:56 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>El nou iPhone Duo, 20 anys del domini .cat i mapes digitals</title>
+      <description>Comentem l'actualitat tecnològica amb Albert Cuesta, amb la presentació d'el nou iPhone Duo, el vintè aniversari del domini .cat i els mapes digitals.</description>
+      <pubDate>Thu, 10 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2026-2027/20260907_TECNOLOGIA___NOVETATS_APPLE.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2026-2027/20260907_TECNOLOGIA___NOVETATS_APPLE.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Polèmica amb Instagram, descens en vendes de mòbils i el Mundial de les operadores</title>
       <description>En l'última secció de la temporada amb Albert Cuesta analitzem la polèmica d'Instagram per la utilització de fotografies de tercers. També comentem les estafes a assegurances de cotxe amb intel·ligència artificial, el descens de vendes de mòbils i els missatges dels operadors mòbils espanyols durant el Mundial.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260409_TECNOLOGIA___X_CATALA.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260409_TECNOLOGIA___X_CATALA.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Condemnes a Meta i Youtube, el català als cotxes i portals de transparència</title>
-      <description>Albert Cuesta ens explica les condemnes que han patit Meta i Youtube, i de com l'empresa de Mark Zuckerberg ha apagat el seu metavers després d'una inversió de 83.500 milions de dòlars. Alhora, parlem de la incorporació del català en diverses marques de cotxe i dels portals de transparència que han sigut notícia les darreres setmanes.</description>
-      <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260326_TECNOLOGIA___JUDICI_META_YOUTUBE.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260326_TECNOLOGIA___JUDICI_META_YOUTUBE.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
