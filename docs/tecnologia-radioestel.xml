@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 17 Sep 2026 11:00:56 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 11:01:07 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>La memòria dels aparells, els canvis de Bizum i les xarxes socials en menors</title>
+      <description>Albert Cuesta ens explica com la intel·ligència artificial ha intercedit en la memòria dels aparells. Alhora, parlem dels canvis de Bizum i de la normativa de la Unió Europea per limitar l'ús de les xarxes socials dels menors.</description>
+      <pubDate>Thu, 24 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2026-2027/20260924_TECNOLOGIA___MEMORIA_APARELLS.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2026-2027/20260924_TECNOLOGIA___MEMORIA_APARELLS.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>El nou iPhone Duo, 20 anys del domini .cat i mapes digitals</title>
       <description>Comentem l'actualitat tecnològica amb Albert Cuesta, amb la presentació d'el nou iPhone Duo, el vintè aniversari del domini .cat i els mapes digitals.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 16 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260416_TECNOLOGIA___PREU_MOBILS.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260416_TECNOLOGIA___PREU_MOBILS.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Traduccions a X, recopilació de dades a LinkedIn i OpenAI tanca Sora</title>
-      <description>Albet Cuesta ens aporta la novetat de la traducció automàtica d''X', disponible en català. A més, ens explica el cas destapat de la recopilació de dades de LinkedIn i els motius econòmics que han dut OpenAI a tancar Sora</description>
-      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260409_TECNOLOGIA___X_CATALA.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260409_TECNOLOGIA___X_CATALA.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
