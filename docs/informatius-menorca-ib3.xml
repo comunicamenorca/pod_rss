@@ -5,13 +5,20 @@
     <link>https://totib3.org/radio/informatiusmenorca</link>
     <description>Informatius de l'edició de Menorca d'IB3 Ràdio</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 15 Oct 2026 13:01:03 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 13:30:48 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-ib3.png</url>
       <title>Informatius Menorca - IB3 Ràdio</title>
       <link>https://totib3.org/radio/informatiusmenorca</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-ib3.png" />
+    <item>
+      <title>Informatiu Migdia - Edició Menorca · 15/10/2026</title>
+      <description>Informatiu Migdia - Edició Menorca · 15/10/2026</description>
+      <pubDate>Thu, 15 Oct 2026 14:30:00 +0000</pubDate>
+      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/72bb6ec4-c896-11f1-b9c0-fa163ed37948/8-605-160239.mp3</guid>
+      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/72bb6ec4-c896-11f1-b9c0-fa163ed37948/8-605-160239.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 15/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 15/10/2026</description>
@@ -144,13 +151,6 @@
       <pubDate>Thu, 01 Oct 2026 08:45:00 +0000</pubDate>
       <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d568ff86-bd65-11f1-b9c0-fa163ed37948/8-391-159740.mp3</guid>
       <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d568ff86-bd65-11f1-b9c0-fa163ed37948/8-391-159740.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Informatiu Migdia - Edició Menorca · 30/09/2026</title>
-      <description>Informatiu Migdia - Edició Menorca · 30/09/2026</description>
-      <pubDate>Wed, 30 Sep 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/0c9cd450-bccd-11f1-b9c0-fa163ed37948/8-605-159721.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/0c9cd450-bccd-11f1-b9c0-fa163ed37948/8-605-159721.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
