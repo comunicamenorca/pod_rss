@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 08 Oct 2026 11:00:57 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 11:01:04 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>Les lleis digitals durant les eleccions, el català a internet i el model europeu d'IA</title>
+      <description>Amb Albert Cuesta detallem les lleis digitals que queden a l'aire després de la convocatòria d'eleccions. Alhora, analitzem l'estat del català a internet, el model europeu d'intel·ligència artificial i els residus electrònics que genera aquesta nova tecnologia.</description>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2026-2027/20261008_TECNOLOGIA___LLEIS_DIGITALS_ELECCIONS.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2026-2027/20261008_TECNOLOGIA___LLEIS_DIGITALS_ELECCIONS.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>La memòria dels aparells, els canvis de Bizum i les xarxes socials en menors</title>
       <description>Albert Cuesta ens explica com la intel·ligència artificial ha intercedit en la memòria dels aparells. Alhora, parlem dels canvis de Bizum i de la normativa de la Unió Europea per limitar l'ús de les xarxes socials dels menors.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 30 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260430_TECNOLOGIA___CIBERATACS.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260430_TECNOLOGIA___CIBERATACS.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>L'operador mòbil de Lidl, Meta espanta a Google i els satèl·lits d'Amazon</title>
-      <description>Albert Cuesta, comencem l'espai amb la novetat de Lidl de voler convertir-se en operador mòbil. Alhora, expliquem les novetats en publicitat de Meta i l'entrada d'Amazon a la guerra dels satèl·lics. A més, acabem amb la regulació de la Unió Europea per verificar l'edat a internet.</description>
-      <pubDate>Thu, 16 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260416_TECNOLOGIA___PREU_MOBILS.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260416_TECNOLOGIA___PREU_MOBILS.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
