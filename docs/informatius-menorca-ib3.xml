@@ -5,7 +5,7 @@
     <link>https://totib3.org/radio/informatiusmenorca</link>
     <description>Informatius de l'edició de Menorca d'IB3 Ràdio</description>
     <language>ca</language>
-    <lastBuildDate>Mon, 19 Oct 2026 07:00:59 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 07:30:46 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-ib3.png</url>
       <title>Informatius Menorca - IB3 Ràdio</title>
@@ -13,144 +13,144 @@
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-ib3.png" />
     <item>
+      <title>Informatiu Matí - Edició Menorca · 19/10/2026</title>
+      <description>Informatiu Matí - Edició Menorca · 19/10/2026</description>
+      <pubDate>Mon, 19 Oct 2026 08:45:00 +0000</pubDate>
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/e9c6dd11-cb8a-11f1-b9c0-fa163ed37948/8-391-160353.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/e9c6dd11-cb8a-11f1-b9c0-fa163ed37948/8-391-160353.mp3" type="audio/mpeg" length="0" />
+    </item>
+    <item>
       <title>Informatiu Migdia - Edició Menorca · 16/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 16/10/2026</description>
       <pubDate>Fri, 16 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/fd61ee67-c95f-11f1-b9c0-fa163ed37948/8-605-160274.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/fd61ee67-c95f-11f1-b9c0-fa163ed37948/8-605-160274.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/fd61ee67-c95f-11f1-b9c0-fa163ed37948/8-605-160274.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/fd61ee67-c95f-11f1-b9c0-fa163ed37948/8-605-160274.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 16/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 16/10/2026</description>
       <pubDate>Fri, 16 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/47602df2-c92f-11f1-b9c0-fa163ed37948/8-391-160258.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/47602df2-c92f-11f1-b9c0-fa163ed37948/8-391-160258.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/47602df2-c92f-11f1-b9c0-fa163ed37948/8-391-160258.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/47602df2-c92f-11f1-b9c0-fa163ed37948/8-391-160258.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 15/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 15/10/2026</description>
       <pubDate>Thu, 15 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/72bb6ec4-c896-11f1-b9c0-fa163ed37948/8-605-160239.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/72bb6ec4-c896-11f1-b9c0-fa163ed37948/8-605-160239.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/72bb6ec4-c896-11f1-b9c0-fa163ed37948/8-605-160239.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/72bb6ec4-c896-11f1-b9c0-fa163ed37948/8-605-160239.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 15/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 15/10/2026</description>
       <pubDate>Thu, 15 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/bef745d5-c865-11f1-b9c0-fa163ed37948/8-391-160223.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/bef745d5-c865-11f1-b9c0-fa163ed37948/8-391-160223.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/bef745d5-c865-11f1-b9c0-fa163ed37948/8-391-160223.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/bef745d5-c865-11f1-b9c0-fa163ed37948/8-391-160223.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 14/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 14/10/2026</description>
       <pubDate>Wed, 14 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/68caedf4-c7cd-11f1-b9c0-fa163ed37948/8-605-160204.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/68caedf4-c7cd-11f1-b9c0-fa163ed37948/8-605-160204.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/68caedf4-c7cd-11f1-b9c0-fa163ed37948/8-605-160204.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/68caedf4-c7cd-11f1-b9c0-fa163ed37948/8-605-160204.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 14/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 14/10/2026</description>
       <pubDate>Wed, 14 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/8b2abb97-c79c-11f1-b9c0-fa163ed37948/8-391-160188.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/8b2abb97-c79c-11f1-b9c0-fa163ed37948/8-391-160188.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/8b2abb97-c79c-11f1-b9c0-fa163ed37948/8-391-160188.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/8b2abb97-c79c-11f1-b9c0-fa163ed37948/8-391-160188.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 13/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 13/10/2026</description>
       <pubDate>Tue, 13 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/61b78b29-c704-11f1-b9c0-fa163ed37948/8-605-160169.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/61b78b29-c704-11f1-b9c0-fa163ed37948/8-605-160169.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/61b78b29-c704-11f1-b9c0-fa163ed37948/8-605-160169.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/61b78b29-c704-11f1-b9c0-fa163ed37948/8-605-160169.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 13/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 13/10/2026</description>
       <pubDate>Tue, 13 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d08b5d91-c6d3-11f1-b9c0-fa163ed37948/8-391-160153.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d08b5d91-c6d3-11f1-b9c0-fa163ed37948/8-391-160153.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d08b5d91-c6d3-11f1-b9c0-fa163ed37948/8-391-160153.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d08b5d91-c6d3-11f1-b9c0-fa163ed37948/8-391-160153.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 09/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 09/10/2026</description>
       <pubDate>Fri, 09 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/9c28b27c-c3df-11f1-b9c0-fa163ed37948/8-605-160024.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/9c28b27c-c3df-11f1-b9c0-fa163ed37948/8-605-160024.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/9c28b27c-c3df-11f1-b9c0-fa163ed37948/8-605-160024.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/9c28b27c-c3df-11f1-b9c0-fa163ed37948/8-605-160024.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 09/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 09/10/2026</description>
       <pubDate>Fri, 09 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/3e7579bf-c3af-11f1-b9c0-fa163ed37948/8-391-160008.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/3e7579bf-c3af-11f1-b9c0-fa163ed37948/8-391-160008.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/3e7579bf-c3af-11f1-b9c0-fa163ed37948/8-391-160008.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/3e7579bf-c3af-11f1-b9c0-fa163ed37948/8-391-160008.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 08/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 08/10/2026</description>
       <pubDate>Thu, 08 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/c5b6b678-c316-11f1-b9c0-fa163ed37948/8-605-159989.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/c5b6b678-c316-11f1-b9c0-fa163ed37948/8-605-159989.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/c5b6b678-c316-11f1-b9c0-fa163ed37948/8-605-159989.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/c5b6b678-c316-11f1-b9c0-fa163ed37948/8-605-159989.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 08/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 08/10/2026</description>
       <pubDate>Thu, 08 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/0a73cc59-c2e6-11f1-b9c0-fa163ed37948/8-391-159973.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/0a73cc59-c2e6-11f1-b9c0-fa163ed37948/8-391-159973.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/0a73cc59-c2e6-11f1-b9c0-fa163ed37948/8-391-159973.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/0a73cc59-c2e6-11f1-b9c0-fa163ed37948/8-391-159973.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 07/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 07/10/2026</description>
       <pubDate>Wed, 07 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/33bdbfe2-c24d-11f1-b9c0-fa163ed37948/8-605-159954.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/33bdbfe2-c24d-11f1-b9c0-fa163ed37948/8-605-159954.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/33bdbfe2-c24d-11f1-b9c0-fa163ed37948/8-605-159954.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/33bdbfe2-c24d-11f1-b9c0-fa163ed37948/8-605-159954.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 07/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 07/10/2026</description>
       <pubDate>Wed, 07 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/e8178fad-c21c-11f1-b9c0-fa163ed37948/8-391-159938.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/e8178fad-c21c-11f1-b9c0-fa163ed37948/8-391-159938.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/e8178fad-c21c-11f1-b9c0-fa163ed37948/8-391-159938.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/e8178fad-c21c-11f1-b9c0-fa163ed37948/8-391-159938.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 06/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 06/10/2026</description>
       <pubDate>Tue, 06 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d44e364c-c183-11f1-b9c0-fa163ed37948/8-605-159919.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d44e364c-c183-11f1-b9c0-fa163ed37948/8-605-159919.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d44e364c-c183-11f1-b9c0-fa163ed37948/8-605-159919.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d44e364c-c183-11f1-b9c0-fa163ed37948/8-605-159919.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 06/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 06/10/2026</description>
       <pubDate>Tue, 06 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/925ff8c4-c153-11f1-b9c0-fa163ed37948/8-391-159903.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/925ff8c4-c153-11f1-b9c0-fa163ed37948/8-391-159903.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/925ff8c4-c153-11f1-b9c0-fa163ed37948/8-391-159903.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/925ff8c4-c153-11f1-b9c0-fa163ed37948/8-391-159903.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 05/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 05/10/2026</description>
       <pubDate>Mon, 05 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/f43f7d10-c0ba-11f1-b9c0-fa163ed37948/8-605-159884.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/f43f7d10-c0ba-11f1-b9c0-fa163ed37948/8-605-159884.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/f43f7d10-c0ba-11f1-b9c0-fa163ed37948/8-605-159884.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/f43f7d10-c0ba-11f1-b9c0-fa163ed37948/8-605-159884.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 05/10/2026</title>
       <description>Informatiu Matí - Edició Menorca · 05/10/2026</description>
       <pubDate>Mon, 05 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/20a09b63-c08a-11f1-b9c0-fa163ed37948/8-391-159868.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/20a09b63-c08a-11f1-b9c0-fa163ed37948/8-391-159868.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/20a09b63-c08a-11f1-b9c0-fa163ed37948/8-391-159868.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/20a09b63-c08a-11f1-b9c0-fa163ed37948/8-391-159868.mp3" type="audio/mpeg" length="0" />
     </item>
     <item>
       <title>Informatiu Migdia - Edició Menorca · 02/10/2026</title>
       <description>Informatiu Migdia - Edició Menorca · 02/10/2026</description>
       <pubDate>Fri, 02 Oct 2026 14:30:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/a0b99572-be5f-11f1-b9c0-fa163ed37948/8-605-159791.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/a0b99572-be5f-11f1-b9c0-fa163ed37948/8-605-159791.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Informatiu Matí - Edició Menorca · 02/10/2026</title>
-      <description>Informatiu Matí - Edició Menorca · 02/10/2026</description>
-      <pubDate>Fri, 02 Oct 2026 08:45:00 +0000</pubDate>
-      <guid>https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d8c4825a-be2e-11f1-b9c0-fa163ed37948/8-391-159775.mp3</guid>
-      <enclosure url="https://d3ftrkjpaecgim.cloudfront.net/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d8c4825a-be2e-11f1-b9c0-fa163ed37948/8-391-159775.mp3" type="audio/mpeg" length="0" />
+      <guid>https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/a0b99572-be5f-11f1-b9c0-fa163ed37948/8-605-159791.mp3</guid>
+      <enclosure url="https://totib3.org/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/a0b99572-be5f-11f1-b9c0-fa163ed37948/8-605-159791.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
