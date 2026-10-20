@@ -195,6 +195,26 @@ def extract_ib3_info(tag):
     return None, None
 
 
+IB3_MEDIA_BASE = "https://media.ib3alacarta.com"
+
+
+def fix_ib3_url(href, page_url):
+    """
+    Corregeix URLs de MP3 d'IB3 que vénen sense domini.
+    A la pàgina de llistat, els src vénen com //UUID/... o /UUID/...
+    El domini real és media.ib3alacarta.com.
+    Ex: //fdb0bc41-dd49.../abc.mp3 → https://media.ib3alacarta.com/fdb0bc41-dd49.../abc.mp3
+    """
+    if not href:
+        return None
+    # Patró: comença amb // o / seguit d'un UUID (8-4-4-4-12 caràcters hex)
+    UUID_RE = r'^/{1,2}([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/)'
+    if re.match(UUID_RE, href):
+        path = href.lstrip('/')
+        return f"{IB3_MEDIA_BASE}/{path}"
+    return urljoin(page_url, href)
+
+
 def get_mp3_links(url, session):
     response = session.get(url, headers=HEADERS, timeout=15)
     response.raise_for_status()
@@ -219,8 +239,12 @@ def get_mp3_links(url, session):
         if ".mp3" not in href.lower():
             continue
 
-        mp3_url = urljoin(url, href)
-        if mp3_url in seen:
+        if is_ib3:
+            mp3_url = fix_ib3_url(href, url)
+        else:
+            mp3_url = urljoin(url, href)
+
+        if not mp3_url or mp3_url in seen:
             continue
         seen.add(mp3_url)
 
