@@ -208,10 +208,11 @@ def fix_ib3_url(href, page_url):
     if not href:
         return None
     # Patró: comença amb // o / seguit d'un UUID (8-4-4-4-12 caràcters hex)
-    UUID_RE = r'^/{1,2}([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/)'
-    if re.match(UUID_RE, href):
-        path = href.lstrip('/')
-        return f"{IB3_MEDIA_BASE}/{path}"
+    # Accepta: https:///UUID/..., //UUID/..., /UUID/..., https://totib3.org/UUID/...
+    UUID_RE = r'^(?:https?:)?(?://(?:[^/]*totib3\.org)?)?/?([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/.*)$'
+    m = re.match(UUID_RE, href)
+    if m:
+        return f"{IB3_MEDIA_BASE}/{m.group(1)}"
     return urljoin(page_url, href)
 
 
