@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 15 Oct 2026 11:01:04 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 11:01:03 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>Actualització de servidors, el nou prefix 400 i Whatsapp per a qui no en té</title>
+      <description>Amb Albert Cuesta fem un repàs de les notícies d'àmbit tecnològic: actualització d'urgència a servidors, el nou prefix 400, Whatsapp per a qui no en té i guerra híbrida de neveres i servidors.</description>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2026-2027/20261022_TECNOLOGIA___PREFIX_400.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2026-2027/20261022_TECNOLOGIA___PREFIX_400.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Les lleis digitals durant les eleccions, el català a internet i el model europeu d'IA</title>
       <description>Amb Albert Cuesta detallem les lleis digitals que queden a l'aire després de la convocatòria d'eleccions. Alhora, analitzem l'estat del català a internet, el model europeu d'intel·ligència artificial i els residus electrònics que genera aquesta nova tecnologia.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260507_TECNOLOGIA___COBERTURA.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260507_TECNOLOGIA___COBERTURA.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Alerta internacional de ciberseguretat</title>
-      <description>Amb Albert Cuesta ens posem al dia de l'alerta internacional de ciberseguretat i dels forats de seguretat a les xarxes mòbils. A més, comentem el llançament de la nova generació d'Alexa i la nova normativa europea per poder canviar les bateries dels dispositius electrònics.</description>
-      <pubDate>Thu, 30 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260430_TECNOLOGIA___CIBERATACS.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260430_TECNOLOGIA___CIBERATACS.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
