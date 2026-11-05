@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 29 Oct 2026 12:01:05 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 12:01:01 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>Ressintonitzar la televisió i ciberatacs a supermercats</title>
+      <description>Albert Cuesta ens explica com ressintonitzar la televisió i els motius que hi ha al darrere. Alhora, analitzem els ciberatacs a supermercats i com les intel·ligències artificials cobren segons la llengua.</description>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2026-2027/20261105_TECNOLOGIA___.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2026-2027/20261105_TECNOLOGIA___.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Actualització de servidors, el nou prefix 400 i Whatsapp per a qui no en té</title>
       <description>Amb Albert Cuesta fem un repàs de les notícies d'àmbit tecnològic: actualització d'urgència a servidors, el nou prefix 400, Whatsapp per a qui no en té i guerra híbrida de neveres i servidors.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260521_TECNOLOGIA___BIZUM.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260521_TECNOLOGIA___BIZUM.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>La xarxa 5G i la intel·ligència artifial a Meta per detectar menors</title>
-      <description>Albert Cuesta ens explica quin és l'estat actual de la xarxa 5G a Espanya i ens detalla com Meta utilitza la intel·ligència artificial per detectar menors d'edat.</description>
-      <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260507_TECNOLOGIA___COBERTURA.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260507_TECNOLOGIA___COBERTURA.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
