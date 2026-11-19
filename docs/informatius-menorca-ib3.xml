@@ -5,13 +5,20 @@
     <link>https://totib3.org/radio/informatiusmenorca</link>
     <description>Informatius de l'edició de Menorca d'IB3 Ràdio</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 19 Nov 2026 14:01:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 14:30:52 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-ib3.png</url>
       <title>Informatius Menorca - IB3 Ràdio</title>
       <link>https://totib3.org/radio/informatiusmenorca</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-ib3.png" />
+    <item>
+      <title>Informatiu Migdia - Edició Menorca · 19/11/2026</title>
+      <description>Informatiu Migdia - Edició Menorca · 19/11/2026</description>
+      <pubDate>Thu, 19 Nov 2026 14:30:00 +0000</pubDate>
+      <guid>https://media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/f8e7fc0f-f18f-4a96-8901-9d9044b0a3b3/8-605-161355.mp3</guid>
+      <enclosure url="https://media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/f8e7fc0f-f18f-4a96-8901-9d9044b0a3b3/8-605-161355.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Informatiu Matí - Edició Menorca · 19/11/2026</title>
       <description>Informatiu Matí - Edició Menorca · 19/11/2026</description>
@@ -144,13 +151,6 @@
       <pubDate>Thu, 05 Nov 2026 08:45:00 +0000</pubDate>
       <guid>https://media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d82f2901-abae-4baa-b1f5-29bd1a127889/8-391-160900.mp3</guid>
       <enclosure url="https://media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d82f2901-abae-4baa-b1f5-29bd1a127889/8-391-160900.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Informatiu Migdia - Edició Menorca · 04/11/2026</title>
-      <description>Informatiu Migdia - Edició Menorca · 04/11/2026</description>
-      <pubDate>Wed, 04 Nov 2026 14:30:00 +0000</pubDate>
-      <guid>https://media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d9a767b9-5822-4cfb-8778-0f4f4da368f0/8-605-160881.mp3</guid>
-      <enclosure url="https://media.ib3alacarta.com/fdb0bc41-dd49-420b-b2ec-88bf3e4b7328/d9a767b9-5822-4cfb-8778-0f4f4da368f0/8-605-160881.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
