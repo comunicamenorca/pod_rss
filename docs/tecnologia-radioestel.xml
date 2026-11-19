@@ -5,13 +5,20 @@
     <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     <description>Secció de tecnologia de Ràdio Estel amb Albert Cuesta</description>
     <language>ca</language>
-    <lastBuildDate>Thu, 12 Nov 2026 12:01:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 12:01:09 +0000</lastBuildDate>
     <image>
       <url>https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png</url>
       <title>Tecnologia - Ràdio Estel</title>
       <link>https://www.radioestel.cat/podcasts/tecnologia/</link>
     </image>
     <itunes:image href="https://comunicamenorca.github.io/pod_rss/imatge-radioestel.png" />
+    <item>
+      <title>Jensen Huang, la febre per GTA 6 i la caiguda mundial de servidors</title>
+      <description>Albert Cuesta ens explica qui és Jensen Huang . Fundador de Nvidia, l'empresa dels xips de la intel·ligència artificial, que ha acabat amb la seva pròpia carrera. També parlem de la febre pel videojoc GTA 6 , que tot just acaba de sortir. Per últim, analitza la caiguda mundial de diversos servidors : Microsoft (correu, Teams, el seu assistent d'IA), el banc Chase, Apple i la NSA.</description>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.estelfitxers.com/podcasts/2026-2027/20261119_TECNOLOGIA___GTA6.mp3</guid>
+      <enclosure url="https://www.estelfitxers.com/podcasts/2026-2027/20261119_TECNOLOGIA___GTA6.mp3" type="audio/mpeg" length="0" />
+    </item>
     <item>
       <title>Ressintonitzar la televisió i ciberatacs a supermercats</title>
       <description>Albert Cuesta ens explica com ressintonitzar la televisió i els motius que hi ha al darrere. Alhora, analitzem els ciberatacs a supermercats i com les intel·ligències artificials cobren segons la llengua.</description>
@@ -74,13 +81,6 @@
       <pubDate>Thu, 04 Jun 2026 00:00:00 +0000</pubDate>
       <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260604_TECNOLOGIA___PAPA.mp3</guid>
       <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260604_TECNOLOGIA___PAPA.mp3" type="audio/mpeg" length="0" />
-    </item>
-    <item>
-      <title>Pagaments amb Bizum i denuncia a Meta, TikTok i Google</title>
-      <description>Amb Albert Cuesta comentem la denuncia a Meta, TikTok i Google per "desprotecció" davant les estafes financeres. A més, tractem els pagaments amb Bizum que s'han començat a utilitzar.</description>
-      <pubDate>Thu, 21 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.estelfitxers.com/podcasts/2025-2026/20260521_TECNOLOGIA___BIZUM.mp3</guid>
-      <enclosure url="https://www.estelfitxers.com/podcasts/2025-2026/20260521_TECNOLOGIA___BIZUM.mp3" type="audio/mpeg" length="0" />
     </item>
   </channel>
 </rss>
